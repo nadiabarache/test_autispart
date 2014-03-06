@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  agediag: 1
+  paysdiag: MyString
+  autistype: MyString
+  psytrouble: MyString
+  autretrouble: MyString
+  user_id: 
+
+two:
+  agediag: 1
+  paysdiag: MyString
+  autistype: MyString
+  psytrouble: MyString
+  autretrouble: MyString
+  user_id: 

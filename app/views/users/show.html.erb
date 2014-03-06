@@ -1,0 +1,126 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pseudo:</strong>
+  <%= @user.pseudo %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @user.age %>
+</p>
+
+<p>
+  <strong>Sexe:</strong>
+  <%= @user.sexe %>
+</p>
+
+<p>
+  <strong>Ville:</strong>
+  <%= @user.ville %>
+</p>
+
+<p>
+  <strong>Depart:</strong>
+  <%= @user.depart %>
+</p>
+
+<p>
+  <strong>Pays:</strong>
+  <%= @user.pays %>
+</p>
+
+<h2>Informations</h2>
+<% @user.infos.each do |comment| %>
+<p>
+  <strong>age de diagnostic</strong>
+  <%= comment.agediag %>
+</p>
+
+<p>
+  <strong>pays du diagnostic </strong>
+  <%= comment.paysdiag %>
+</p>
+
+<p>
+  <strong>Type d'autisme</strong>
+  <%= comment.autistype %>
+</p>
+<p>
+  <strong>Troubles psy </strong>
+  <%= comment.psytrouble %>
+</p>
+<p>
+  <strong>Autres troubles </strong>
+  <%= comment.autretrouble %>
+</p>
+
+<p>
+  <%= link_to 'Destroy ', [comment.user, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+<% end %>
+
+</p>
+<h2>Add informations :</h2>
+<%= form_for([@user, @user.infos.build]) do |f| %>
+<p>
+  <%= f.label :agediag , "Age de diagnostic" %><br />
+  <%= f.text_field :agediag %>
+</p>
+<p>
+  <%= f.label :paysdiag , "pays de digan" %><br />
+  <%= f.text_area :paysdiag %>
+</p>
+<p>
+  <%= f.label :autistype %><br />
+  <%= f.text_area :autistype %>
+</p>
+<p>
+  <%= f.label :psytrouble %><br />
+  <%= f.text_area :psytrouble %>
+</p>
+<p>
+  <%= f.label :autistype %><br />
+  <%= f.select :autistype, [
+    ["F840-autisme infantile", "F840-autisme infantile"], 
+    ["F841-autisme atypique",   "F841-autisme infantile"], 
+    ["F842-Syndrome de Rett",   "F842-Syndrome de Rett"],
+    ["F843-Autre trouble désintégratif de l'enfance","F843-Autre trouble désintégratif de l'enfance"],
+    ["F844-Hyperactivité associée à un retard mental et à des mouvements stéréotypés", "F844-Hyperactivité associée à un retard mental et à des mouvements stéréotypés"],
+    ["F845-Syndrome de d'Asperger",   "F845-Syndrome de d'Asperger"],
+    ["F848-Autres troubles envahissants du développmenent",   "F848-Autres troubles envahissants du développmenent"],
+    ["F849-Troubles envahissants du développmenent,sans précision ",   "F849- Troubles envahissant du développmenent , sans précision"]
+
+ 
+
+    ] %>
+</p>
+
+<p>
+  <%= f.label :autretrouble %><br />
+  <%= f.text_area :autretrouble %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+
+
+
+<div class="large-12 columns">
+  <label>Select Box
+    <select>
+      <option value="husker">Husker</option>
+      <option value="starbuck">Starbuck</option>
+      <option value="hotdog">Hot Dog</option>
+      <option value="apollo">Apollo</option>
+    </select>
+  </label>
+</div>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
