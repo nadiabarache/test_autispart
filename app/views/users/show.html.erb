@@ -30,6 +30,9 @@
   <%= @user.pays %>
 </p>
 
+
+<!-- Informations individu autiste -->
+
 <h2>Informations</h2>
 <% @user.infos.each do |comment| %>
 <p>
@@ -57,12 +60,15 @@
 
 <p>
   <%= link_to 'Destroy ', [comment.user, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+  method: :delete,
+  data: { confirm: 'Are you sure?' } %>
 </p>
 <% end %>
 
 </p>
+
+<!-- Ajout des informations pour chaque individu -->
+
 <h2>Add informations :</h2>
 <%= form_for([@user, @user.infos.build]) do |f| %>
 <p>
@@ -70,20 +76,13 @@
   <%= f.text_field :agediag %>
 </p>
 <p>
-  <%= f.label :paysdiag , "pays de digan" %><br />
+  <%= f.label :paysdiag , "Pays du diagnostic" %><br />
   <%= f.text_area :paysdiag %>
 </p>
 <p>
-  <%= f.label :autistype %><br />
-  <%= f.text_area :autistype %>
-</p>
-<p>
-  <%= f.label :psytrouble %><br />
-  <%= f.text_area :psytrouble %>
-</p>
-<p>
-  <%= f.label :autistype %><br />
+  <%= f.label :autistype , "Type d'autisme" %><br />
   <%= f.select :autistype, [
+    [" ", ""], 
     ["F840-autisme infantile", "F840-autisme infantile"], 
     ["F841-autisme atypique",   "F841-autisme infantile"], 
     ["F842-Syndrome de Rett",   "F842-Syndrome de Rett"],
@@ -92,35 +91,93 @@
     ["F845-Syndrome de d'Asperger",   "F845-Syndrome de d'Asperger"],
     ["F848-Autres troubles envahissants du développmenent",   "F848-Autres troubles envahissants du développmenent"],
     ["F849-Troubles envahissants du développmenent,sans précision ",   "F849- Troubles envahissant du développmenent , sans précision"]
-
- 
-
     ] %>
-</p>
-
-<p>
-  <%= f.label :autretrouble %><br />
-  <%= f.text_area :autretrouble %>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
+  </p>
 
 
+  <p>
+    <%= f.label :psytrouble , "Troubles du developpment psychologique"%><br />
+
+    <%= f.select :psytrouble, [
+      [" ", ""], 
 
 
-<div class="large-12 columns">
-  <label>Select Box
-    <select>
-      <option value="husker">Husker</option>
-      <option value="starbuck">Starbuck</option>
-      <option value="hotdog">Hot Dog</option>
-      <option value="apollo">Apollo</option>
-    </select>
-  </label>
-</div>
-</div>
+      ["F800-Trouble spécifique de l'acquisition de l'articulation", "F800-Trouble spécifique de l'acquisition de l'articulation"], 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+      ["F801-Trouble de l'acquisition du langage,  de type expressif",   "F801-Trouble de l'acquisition du langage,  de type expressif"],
+
+      ["F802-Trouble de l'acquisition du langage,  de type réceptif",   "F802-Trouble de l'acquisition du langage,  de type réceptif"], 
+
+      ["F803-Aphasie acquise avec épilepsie[Landau-Kleffner]",   "F802-Aphasie acquise avec épilepsie[Landau-Kleffner]"],
+
+      ["F808-Autres troubles du développement de la parole et du langage",   "F808-Autres troubles du développement de la parole et du langage"],
+
+      ["F809-Troubles du developpment de la parole et du langage, sans précision",   "F809-Troubles du developpment de la parole et du langage, sans précision"],
+
+      ["F810-Trouble de l'acquisition de la lecture",   "F810-Trouble de l'acquisition de la lecture"],
+
+      ["F811-Trouble de l'acquisition de l'orthographe",   "F811-Trouble de l'acquisition de l'orthographe"],
+      ["F812-Trouble de l'acquisition de l'arithmétique",   "F812-Trouble de l'acquisition de l'arithmétique"],
+
+      ["F813-Trouble mixte des acquisitions scolaire",   "F813-Trouble mixte des acquisitions scolaire"],
+
+      ["F818-Autres troubles du développement",   "F818-Autres troubles du développement"],
+
+      ["F819-Trouble du developpment, des acquisitions scolaires, sans précision",   "F819-Trouble du developpment, des acquisitions scolaires, sans précision"],
+
+      ["F82-Troubles spécifique du développement moteur",   "F82-Troubles spécifique du développement moteur"],
+
+      ["F83-Troubles spécifiques mixte du développement",   "F83-Troubles spécifiques mixte du développement"],
+
+      ["F840- Autisme infantile",   "F-Autres Autisme infantile"],
+
+      ["F841-Autisme atypique",   "F841-Autisme atypique"],
+
+      ["F841-Autisme atypique",   "F841-Autisme atypique"],
+
+      ["F842-Syndrome de Rett",   "F842-Syndrome de Rett"],
+      ["F843-Autre trouble désintégratif de l'enfance",   "F843-Autre trouble désintégratif de l'enfance"],
+
+      ["F844-Hyperactivité associée à un retard mental et à des mouvements",   "F844-Hyperactivité associée à un retard mental et à des mouvements"],
+
+      ["F845-Syndrome d'Asperger",   "F845-Syndrome d'Asperger"],
+
+      ["F849-Troubles envahissants du développement",   "F849-Troubles envahissants du développement"],
+      ["F88-Autres troubles du développement psychologique",   "F88-Autres troubles du développement psychologique"],
+
+      ["F849-Trouble du développment psychologique",   "F849-Trouble du développment psychologique"],
+      ]%>
+
+    </p>
+
+
+    <p>
+      <%= f.label :autretrouble , "Autres troubles"%><br />
+
+
+      <%= f.select :psytrouble, [
+        [" ", ""], 
+        ["F000-Démence de la maladie d'Alzheimer, à début précoce(G30.0)", "F000-Démence de la maladie d'Alzheimer, à début précoce(G30.0)"], 
+
+        ["F001-Démence de la maladie d'Alzheimer, à début tardif(G30.1)", "F000-Démence de la maladie d'Alzheimer, à début tardif(G30.1)"], 
+
+        ["F002-Démence de la maladie d'Alzheimer, forme atypique ou mixte(G30.8)", "F000-Démence de la maladie d'Alzheimer, forme atypique ou mixte(G30.8)"],
+
+        ["F009-Démence de la maladie d'Alzheimer, sans précision(G30.9)", "F000-Démence de la maladie d'Alzheimer, sans précision(G30.9)"],  
+
+               ]%>
+
+
+
+
+
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+      <% end %>
+
+
+
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <%= link_to 'Back', users_path %>
