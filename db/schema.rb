@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306101840) do
+ActiveRecord::Schema.define(version: 20140306151540) do
+
+  create_table "humours", force: true do |t|
+    t.string   "day_humour"
+    t.string   "event"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "humours", ["user_id"], name: "index_humours_on_user_id"
 
   create_table "infos", force: true do |t|
     t.integer  "agediag"

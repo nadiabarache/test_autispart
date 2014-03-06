@@ -1,3 +1,5 @@
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -133,8 +135,6 @@
 
       ["F841-Autisme atypique",   "F841-Autisme atypique"],
 
-      ["F841-Autisme atypique",   "F841-Autisme atypique"],
-
       ["F842-Syndrome de Rett",   "F842-Syndrome de Rett"],
       ["F843-Autre trouble désintégratif de l'enfance",   "F843-Autre trouble désintégratif de l'enfance"],
 
@@ -155,17 +155,49 @@
       <%= f.label :autretrouble , "Autres troubles"%><br />
 
 
-      <%= f.select :psytrouble, [
+      <%= f.select :autretrouble, [
         [" ", ""], 
+        
         ["F000-Démence de la maladie d'Alzheimer, à début précoce(G30.0)", "F000-Démence de la maladie d'Alzheimer, à début précoce(G30.0)"], 
-
         ["F001-Démence de la maladie d'Alzheimer, à début tardif(G30.1)", "F000-Démence de la maladie d'Alzheimer, à début tardif(G30.1)"], 
-
         ["F002-Démence de la maladie d'Alzheimer, forme atypique ou mixte(G30.8)", "F000-Démence de la maladie d'Alzheimer, forme atypique ou mixte(G30.8)"],
+        ["F009-Démence de la maladie d'Alzheimer, sans précision(G30.9)", "F000-Démence de la maladie d'Alzheimer, sans précision(G30.9)"], 
+
+        ["F010-Démence vasculaire à début aigu", "F000-Démence vasculaire à début aigu"], 
+        ["F011-Démence vasculaire par infractus multiples", "F011-Démence vasculaire par infractus multiples"], 
+        ["F010-Démence vasculaire à début aigu", "F000-Démence vasculaire à début aigu"], 
+        ["F012-Démence vasculaire sous-corticale", "F012-Démence vasculaire sous corticale"], 
+        ["F013-Démence vasculaire mixte, corticale et sous-corticale", "F013-Démence vasculaire mixte, corticale et sous-corticale"], 
+        ["F018-Autres formes de démence vasculaire ", "F018-Autres formes de démence vasculaire "], 
+        ["F019-Démence vasculaire, sans précision", "F019-Démence vasculaire, sans précision"],
+
+
+
+        ["F021-Démence de la maladie de Creutzfeld-Jakob(A81.0)", "F021-Démence de la maladie de Creutzfeld-Jakob(A81.0)"], 
+        ["F022-Démence de la maladie de Huntington(G10)", "F022-Démence de la maladie de Huntington(G10)"], 
+        ["F023-Démence de la maladie de Parkinson(G20)", "F023-Démence de la maladie de Parkinson(G20)"], 
+        ["F024-Démence de la maladie de la maladie due au VIH(B22.0)", "F024-Démence de la maladie de la maladie due au VIH(B22.0)"], 
+
+        ["F028-Démence en cours d'autres maladies classées ailleurs", "F028-Démence en cours d'autres maladies classées ailleurs"], 
+        ["F03-Démence, sans précision", "F03-Démence, sans précision"], 
+
+
+
+
+
+
+
+
+
+        ["F009-Démence de la maladie d'Alzheimer, sans précision(G30.9)", "F000-Démence de la maladie d'Alzheimer, sans précision(G30.9)"], 
+
+        ["F009-Démence de la maladie d'Alzheimer, sans précision(G30.9)", "F000-Démence de la maladie d'Alzheimer, sans précision(G30.9)"], 
+
+        ["F009-Démence de la maladie d'Alzheimer, sans précision(G30.9)", "F000-Démence de la maladie d'Alzheimer, sans précision(G30.9)"], 
 
         ["F009-Démence de la maladie d'Alzheimer, sans précision(G30.9)", "F000-Démence de la maladie d'Alzheimer, sans précision(G30.9)"],  
 
-               ]%>
+        ]%>
 
 
 
@@ -176,6 +208,61 @@
         <%= f.submit %>
       </p>
       <% end %>
+
+
+      <div>
+
+
+        <!-- Day_humour & event -->
+
+
+        <h2>Etat du jour : </h2>
+        <% @user.humours.each do |comment| %>
+        <p>
+          <strong> Humour du jour </strong>
+          <%= comment.day_humour %>
+        </p>
+
+        <p>
+          <strong>Evenement du jour </strong>
+          <%= comment.event %>
+        </p>
+
+        <%= link_to 'Destroy etat', [comment.user, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+        <% end %>
+
+
+
+<!-- add etat end event -->
+
+        <h2>L'etat de l'enfant et event important</h2>
+        <%= form_for([@user, @user.humours.build]) do |f| %>
+        <p>
+          <%= f.label :day_humour %><br />
+          <%= f.radio_button :day_humour, "1" %>Bien <br />
+          <%= f.radio_button :day_humour, "0" %>Pas bien <br />
+          
+        </p>
+        <p>
+          <%= f.label :event %><br />
+          <%= f.text_area :event %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+        <% end %>
+
+
+
+      </div>
+
+
+
+
+
 
 
 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day_humour: MyString
+  event: MyString
+  user_id: 
+
+two:
+  day_humour: MyString
+  event: MyString
+  user_id: 
